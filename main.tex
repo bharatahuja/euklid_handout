@@ -44,7 +44,6 @@ Leibniz Universit\"at Hannover\\
 \end{center}
 \newpage
 	\item \textsc{Euklid} \\ \begin{algorithmic}[1]
-		\State \textbf{if} $a < b$: vertausche a und b.
 		\While {$b>0$}
 		\State berechne $q,r$ mit $a=q\cdot b+r$, wobei $0\leq r < b$
 		\State $a\gets b, b\gets r$
@@ -52,7 +51,7 @@ Leibniz Universit\"at Hannover\\
 		\State \textbf{return} $a$
 	\end{algorithmic}	
 	\begin{center}
-	\includegraphics[scale=0.5]{euklid}
+	\includegraphics[scale=0.4]{euklid}
 	\end{center}
 	\vspace{10pt}
 	\item \textsc{Euklid} effizienter als \textsc{LangsamEuklid} wegen Zusammenfassung mehrfacher Subtraktionen.
