@@ -26,7 +26,7 @@ Leibniz Universit\"at Hannover\\
 \begin{itemize}
 	\item  Der euklidische Algorithmus ist ein Algorithmus, mit dem sich der \underline{gr\"o{\ss}te gemeinsame Teiler} (\textit{g.g.T.}) zweier nat\"urlicher Zahlen berechnen l\"asst. 
 	\item Diesen Algorithmus hat Euklid ca. 300 \textit{v.Chr.} in \textit{Buch VII -- Die Elemente} (Proposition 1 und 2) als einen geometrischen Algorithmus vorgestellt.
-	\item Berechnung von \textit{g.g.T.} relevant bei Gruppierung von Objekten, Pr\"ufen von Teilerfremdheit.
+	\item Die Berechnung vom \textit{g.g.T.} ist relevant f\"ur die Gruppierung von Objekten und das Pr\"ufen auf Teilerfremdheit.
  
 	\item Die Teilerfremdheit zweier Zahlen kann man alternativ durch das Vergleichen der Primfaktoren \"uberpr\"ufen.
 	$$ggT(a,b) = \prod_{i \in \mathbb{N}} p_{i}^{min(a_i,b_i)}$$ wobei $p_{i} \in \mathbb{P}$.
@@ -54,7 +54,7 @@ Leibniz Universit\"at Hannover\\
 	\includegraphics[scale=0.4]{euklid}
 	\end{center}
 	\vspace{10pt}
-	\item \textsc{Euklid} effizienter als \textsc{LangsamEuklid} wegen Zusammenfassung mehrfacher Subtraktionen.
+	\item \textsc{Euklid} ist effizienter als \textsc{LangsamEuklid} wegen Zusammenfassung mehrfacher Subtraktionen.
 	\item Je schneller die Reste fallen, desto fr\"uher terminiert der Algorithmus. Die Fibonacci-Zahlen bilden den ung\"unstigsten Fall f\"ur diesen Algorithmus, weil alle Quotienten den kleinstm\"oglichen Wert annehmen, und dadurch die Reste sehr langsam fallen.
 	\item Nach der ersten Iteration ist immer nur der Divisionsrest relevant.
 	$$\therefore T_{b} = \frac{1}{b} \sum_{0 < k\leq b} T(k,b)$$
