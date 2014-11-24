@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass {article}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -22,16 +22,21 @@ Leibniz Universit\"at Hannover\\
 \end{flushright}
 
 \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
-\vspace{10pt}
-\begin{itemize}
-	\item  Der euklidische Algorithmus ist ein Algorithmus, mit dem sich der \underline{gr\"o{\ss}te gemeinsame Teiler} (\textit{g.g.T.}) zweier nat\"urlicher Zahlen berechnen l\"asst. 
-	\item Diesen Algorithmus hat Euklid ca. 300 \textit{v.Chr.} in \textit{Buch VII -- Die Elemente} (Proposition 1 und 2) als einen geometrischen Algorithmus vorgestellt.
-	\item Die Berechnung vom \textit{g.g.T.} ist relevant f\"ur die Gruppierung von Objekten und das Pr\"ufen auf Teilerfremdheit.
+
+\vspace*{10pt}
+Der euklidische Algorithmus ist ein Algorithmus, mit dem sich der \underline{gr\"o{\ss}te gemeinsame Teiler} (\textit{g.g.T.}) zweier nat\"urlicher Zahlen berechnen l\"asst. Diesen Algorithmus hat Euklid ca. 300 \textit{v.Chr.} in \textit{Buch VII -- Die Elemente} (Proposition 1 und 2) als einen geometrischen Algorithmus vorgestellt.
+\\
+
+Die Berechnung vom \textit{g.g.T.} ist relevant f\"ur die Gruppierung von Objekten und das Pr\"ufen auf Teilerfremdheit von Zahlen.
  
-	\item Die Teilerfremdheit zweier Zahlen kann man alternativ durch das Vergleichen der Primfaktoren \"uberpr\"ufen.
+Die Teilerfremdheit zweier Zahlen kann man alternativ durch das Vergleichen der Primfaktoren \"uberpr\"ufen.
 	$$ggT(a,b) = \prod_{i \in \mathbb{N}} p_{i}^{min(a_i,b_i)}$$ wobei $p_{i} \in \mathbb{P}$.
-	\item Die Bestimmung der Primfaktorzerlegung einer Zahl liegt aber in NP.
-	\item \textsc{LangsamEuklid}\\\begin{algorithmic}[1]
+Die Bestimmung der Primfaktorzerlegung einer Zahl liegt aber in NP.\\
+
+Euklid hat damals den folgenden Algorithmus vorgestellt.\\
+
+\textsc{LangsamEuklid}: Gegeben $a,b \in \mathbb{N}$
+\begin{algorithmic}[1]
 \While {$a\neq b$}
 	\State Falls $a$ gr\"o{\ss}er ist als $b, a\gets a-b$
 	\State Falls $b$ gr\"o{\ss}er ist als $a, b\gets b-a$
@@ -42,8 +47,12 @@ Leibniz Universit\"at Hannover\\
 \begin{center}
 \includegraphics[scale=0.4]{langsamEuklid}
 \end{center}
+Dieser Algorithmus braucht viele \"uberfl\"ussige Schritte, die man weglassen m\"ochte, wenn eine der beiden Zahlen wesentlich gr\"o{\ss}er ist.
+
+Den Algorithmus sollte man deswegen verbessern und so erhalten wir den modernen Euklidischen Algorithmus.
 \newpage
-	\item \textsc{Euklid} \\ \begin{algorithmic}[1]
+	\textsc{Euklid}: Gegeben $a,b \in \mathbb{N}$
+	 \begin{algorithmic}[1]
 		\While {$b>0$}
 		\State berechne $q,r$ mit $a=q\cdot b+r$, wobei $0\leq r < b$
 		\State $a\gets b, b\gets r$
@@ -54,12 +63,26 @@ Leibniz Universit\"at Hannover\\
 	\includegraphics[scale=0.4]{euklid}
 	\end{center}
 	\vspace{10pt}
-	\item \textsc{Euklid} ist effizienter als \textsc{LangsamEuklid} wegen Zusammenfassung mehrfacher Subtraktionen.
-	\item Je schneller die Reste fallen, desto fr\"uher terminiert der Algorithmus. Die Fibonacci-Zahlen bilden den ung\"unstigsten Fall f\"ur diesen Algorithmus, weil alle Quotienten den kleinstm\"oglichen Wert annehmen, und dadurch die Reste sehr langsam fallen.
-	\item Nach der ersten Iteration ist immer nur der Divisionsrest relevant.
-	$$\therefore T_{b} = \frac{1}{b} \sum_{0 < k\leq b} T(k,b)$$
-	\item Wenn man eine zuf\"allig gew\"ahlte Zahl auf Teilerfremdheit mit 5 pr\"ufen m\"ochte, braucht man im Schnitt $T_5=$ 2,6 Iterationen. Es gilt,
-	$$T_n \approx \ln{n} + O(1)$$
-\end{itemize}
+	$2\cdot \log_2{a}$ ist eine obere Schranke an der Anzahl an Iterationen von \textsc{Euklid}.
+	
+	Dieser Algorithmus ist nat\"urlich viel effizienter als \textsc{LangsamEuklid}, wo die obere Schranke an Iterationen $a+b$ lautet, weil man mehrfache Subtraktionen zusammengefasst hat.\\
 
+
+Betrachtet man den Worst-Case f\"ur diesen Algorithmus, dann stellt man fest, je schneller die Reste fallen, desto fr\"uher terminiert der Algorithmus. D.h. die Fibonacci-Zahlen bilden den ung\"unstigsten Fall f\"ur diesen Algorithmus, weil alle Quotienten den kleinstm\"oglichen Wert annehmen, und dadurch die Reste sehr langsam fallen.
+
+Im Kern ist der Euklidische Algorithmus effizient, weil nach jeder Iteration immer nur der Divisionsrest relevant ist.\\
+Zur Veranschaulichung : Pr\"uft man die Zahlen $938631347$ und $2$ auf Teilerfremdheit, so achtet man intuitiv auch nur auf den Divisionsrest.
+	$$\Rightarrow T_{b} = \frac{1}{b} \sum_{0 < k\leq b} T(k,b)$$ wobei $T_{b}$ die durchschnittliche Anzahl an Divisionen ist, wenn man eine zuf\"allige Zahl auf Teilerfremdheit mit $b$ pr\"ufen m\"ochte.
+
+Ausserdem gilt,
+	$$T_n \approx H_n$$
+	\begin{flushright}
+	wobei $H_n$ die $n$-te harmonische Zahl ist.	
+	\end{flushright}	
+\vspace*{10pt}
+Literaturverzeichnis :
+\begin{itemize}
+\item \textit{The Art of Computer Programming: Band 1} Kapitel 1.1
+\item \textit{The Art of Computer Programming: Band 2} Kapitel 4.5.2
+\end{itemize}
 \end{document}
